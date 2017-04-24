@@ -14,6 +14,8 @@
 		7F2876611EAE5F360045F711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F2876601EAE5F360045F711 /* Assets.xcassets */; };
 		7F2876641EAE5F360045F711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F2876621EAE5F360045F711 /* LaunchScreen.storyboard */; };
 		7F28766D1EAE6D360045F711 /* AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F28766C1EAE6D360045F711 /* AutoLayout.m */; };
+		7F2876721EAE95EB0045F711 /* hotels.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F2876711EAE95EB0045F711 /* hotels.json */; };
+		7F2876751EAEA4850045F711 /* HotelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2876741EAEA4850045F711 /* HotelsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		7F2876651EAE5F360045F711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F28766B1EAE6D360045F711 /* AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayout.h; sourceTree = "<group>"; };
 		7F28766C1EAE6D360045F711 /* AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayout.m; sourceTree = "<group>"; };
+		7F2876711EAE95EB0045F711 /* hotels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hotels.json; sourceTree = "<group>"; };
+		7F2876731EAEA4850045F711 /* HotelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelsViewController.h; sourceTree = "<group>"; };
+		7F2876741EAEA4850045F711 /* HotelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +68,6 @@
 			children = (
 				7F2876701EAE6D650045F711 /* Controllers */,
 				7F28766F1EAE6D5C0045F711 /* Views */,
-				7F2876541EAE5F360045F711 /* AppDelegate.h */,
-				7F2876551EAE5F360045F711 /* AppDelegate.m */,
-				7F2876571EAE5F360045F711 /* ViewController.h */,
-				7F2876581EAE5F360045F711 /* ViewController.m */,
 				7F28766E1EAE6D430045F711 /* Models */,
 				7F2876601EAE5F360045F711 /* Assets.xcassets */,
 				7F2876621EAE5F360045F711 /* LaunchScreen.storyboard */,
@@ -88,6 +89,7 @@
 		7F28766E1EAE6D430045F711 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7F2876711EAE95EB0045F711 /* hotels.json */,
 				7F28766B1EAE6D360045F711 /* AutoLayout.h */,
 				7F28766C1EAE6D360045F711 /* AutoLayout.m */,
 			);
@@ -104,6 +106,12 @@
 		7F2876701EAE6D650045F711 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F2876541EAE5F360045F711 /* AppDelegate.h */,
+				7F2876551EAE5F360045F711 /* AppDelegate.m */,
+				7F2876571EAE5F360045F711 /* ViewController.h */,
+				7F2876581EAE5F360045F711 /* ViewController.m */,
+				7F2876731EAEA4850045F711 /* HotelsViewController.h */,
+				7F2876741EAEA4850045F711 /* HotelsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F2876721EAE95EB0045F711 /* hotels.json in Resources */,
 				7F2876641EAE5F360045F711 /* LaunchScreen.storyboard in Resources */,
 				7F2876611EAE5F360045F711 /* Assets.xcassets in Resources */,
 			);
@@ -182,6 +191,7 @@
 				7F2876591EAE5F360045F711 /* ViewController.m in Sources */,
 				7F28765F1EAE5F360045F711 /* CoreDataHotel.xcdatamodeld in Sources */,
 				7F2876561EAE5F360045F711 /* AppDelegate.m in Sources */,
+				7F2876751EAEA4850045F711 /* HotelsViewController.m in Sources */,
 				7F2876531EAE5F360045F711 /* main.m in Sources */,
 				7F28766D1EAE6D360045F711 /* AutoLayout.m in Sources */,
 			);

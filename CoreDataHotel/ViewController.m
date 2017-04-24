@@ -10,6 +10,8 @@
 
 #import "AutoLayout.h"
 
+#import "HotelsViewController.h"
+
 @interface ViewController ()
 
 @end
@@ -26,7 +28,8 @@
 
 -(void)setupLayout{
     
-    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+//    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);//navbar height is 44
+    
     
     UIButton *browseButton = [self createButtonWithTitle:@"Browse"];
     UIButton *bookButton = [self createButtonWithTitle:@"Book"];
@@ -37,13 +40,21 @@
     [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
     [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
     
+//    [AutoLayout topConstraintFrom:browseButton toView:self.view.bounds.size.height -44];
+//    [AutoLayout bottomConstraintFrom:browseButton toView:self.view];
     NSLayoutConstraint *browseHeight = [AutoLayout equalHeightConstraintFromView:browseButton toView:self.view withMultiplier:0.33];
+    
+    
     
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)browseButtonSelected{
-    NSLog(@"Work on this for lab.");
+    
+    HotelsViewController *hotelsVC = [[HotelsViewController alloc]init];
+    
+    [self.navigationController pushViewController:hotelsVC animated:YES];
+    
 }
 
 -(UIButton *)createButtonWithTitle:(NSString *)title{
@@ -63,13 +74,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

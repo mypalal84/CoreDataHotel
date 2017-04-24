@@ -13,6 +13,8 @@
 #import "Hotel+CoreDataClass.h"
 #import "Hotel+CoreDataProperties.h"
 
+#import "AutoLayout.h"
+
 @interface HotelsViewController ()<UITableViewDataSource>
 
 @property(strong, nonatomic)NSArray *allHotels;
@@ -26,6 +28,11 @@
 -(void)loadView{
     [super loadView];
     
+    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    [self allHotels];
+//    [AutoLayout ]
+    
     //add tableView as subview and apply constraints
 }
 
@@ -34,7 +41,7 @@
     
     self.tableView.dataSource = self;
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
     
 }
 
@@ -46,7 +53,7 @@
         
         NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
         
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotels"];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
         
         NSError *fetchError;
         
@@ -60,6 +67,21 @@
     }
     return _allHotels;
     
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [_allHotels count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotelCell" forIndexPath:indexPath];
+    
+    NSArray *hotels = _allHotels;
+    Hotel *currentHotel = hotels[indexPath.row];
+    cell.textLabel.text = currentHotel.name;
+    
+    return cell;
 }
 
 @end

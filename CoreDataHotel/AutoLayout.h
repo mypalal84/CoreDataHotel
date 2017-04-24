@@ -31,4 +31,10 @@
 +(NSLayoutConstraint *)trailingConstraintFrom:(UIView *)view
                                        toView:(UIView *)otherView;
 
++(NSLayoutConstraint *)topConstraintFrom:(UIView *)view
+                                      toView:(UIView *)otherView;
+
++(NSLayoutConstraint *)bottomConstraintFrom:(UIView *)view
+                                       toView:(UIView *)otherView;
+
 @end

@@ -43,21 +43,44 @@
 
     lookupButton.backgroundColor                   = [UIColor colorWithRed:0.89 green:0.53 blue:0.63 alpha:1.0];
 
-    [AutoLayout height:buttonHeight forView:browseButton];
-    [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
-    [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
-    [AutoLayout topOffset:topAnchorHeight fromViewTop:browseButton toViewTop:self.view];
-
-    [AutoLayout height:buttonHeight forView:bookButton];
-    [AutoLayout width:self.view.bounds.size.width forView:bookButton];
-    [AutoLayout centerXFrom:bookButton toView:self.view withOffset:0];
-    [AutoLayout topOffset:0 fromViewTop:bookButton toViewBottom:browseButton];
-
-    [AutoLayout height:buttonHeight forView:lookupButton];
-    [AutoLayout width:self.view.bounds.size.width forView:lookupButton];
-    [AutoLayout bottomConstraintFrom:lookupButton toView:self.view];
-
-
+    
+    if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
+    {
+        NSLog(@"portrait");
+        [AutoLayout height:buttonHeight forView:browseButton];
+        [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
+        [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
+        [AutoLayout topOffset:topAnchorHeight fromViewTop:browseButton toViewTop:self.view];
+        
+        [AutoLayout height:buttonHeight forView:bookButton];
+        [AutoLayout leadingConstraintFrom:bookButton toView:self.view];
+        [AutoLayout trailingConstraintFrom:bookButton toView:self.view];
+        [AutoLayout topOffset:0 fromViewTop:bookButton toViewBottom:browseButton];
+        
+        [AutoLayout height:buttonHeight forView:lookupButton];
+        [AutoLayout leadingConstraintFrom:lookupButton toView:self.view];
+        [AutoLayout trailingConstraintFrom:lookupButton toView:self.view];
+        [AutoLayout bottomConstraintFrom:lookupButton toView:self.view];
+    }
+    else if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+    {
+        NSLog(@"landscape");
+        [AutoLayout height:buttonHeight forView:browseButton];
+        [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
+        [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
+        [AutoLayout topOffset:topAnchorHeight fromViewTop:browseButton toViewTop:self.view];
+        
+        [AutoLayout height:buttonHeight forView:bookButton];
+        [AutoLayout leadingConstraintFrom:bookButton toView:self.view];
+        [AutoLayout trailingConstraintFrom:bookButton toView:self.view];
+        [AutoLayout topOffset:0 fromViewTop:bookButton toViewBottom:browseButton];
+        
+        [AutoLayout height:buttonHeight forView:lookupButton];
+        [AutoLayout leadingConstraintFrom:lookupButton toView:self.view];
+        [AutoLayout trailingConstraintFrom:lookupButton toView:self.view];
+        [AutoLayout bottomConstraintFrom:lookupButton toView:self.view];
+    }
+    
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
 
     [bookButton addTarget:self action:@selector(bookButtonSelected) forControlEvents:UIControlEventTouchUpInside];

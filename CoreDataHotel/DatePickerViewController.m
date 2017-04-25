@@ -12,8 +12,8 @@
 
 @interface DatePickerViewController ()
 
-@property(strong, nonatomic) UIDatePicker *startDate;
-@property(strong, nonatomic) UIDatePicker *endDate;
+@property(strong, nonatomic) UIDatePicker *startDatePicker;
+@property(strong, nonatomic) UIDatePicker *endDatePicker;
 
 @end
 
@@ -30,17 +30,38 @@
 }
 
 -(void)setupDatePickers{
+    CGFloat navBarHeight                           = CGRectGetHeight(self.navigationController.navigationBar.frame);//navbar height is 44
+    CGFloat statusBarHeight                        = [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat topAnchorHeight                        = navBarHeight + statusBarHeight;
+    CGFloat viewHeight                             = self.view.bounds.size.height - topAnchorHeight;
+    CGFloat datePickerHeight                       = viewHeight / 2;
+
     
-    self.endDate                = [[UIDatePicker alloc]init];
     
-    self.endDate.datePickerMode = UIDatePickerModeDate;
+    self.startDatePicker = [[UIDatePicker alloc]init];
+    
+    self.startDatePicker.datePickerMode = UIDatePickerModeDate;
+    
+    [self.view addSubview:self.startDatePicker];
+    
+    self.endDatePicker                = [[UIDatePicker alloc]init];
+    
+    self.endDatePicker.datePickerMode = UIDatePickerModeDate;
+    
+    [self.view addSubview:self.endDatePicker];
+    
+    [AutoLayout height:datePickerHeight forView:self.startDatePicker];
+    [AutoLayout width:self.view.bounds.size.width forView:self.startDatePicker];
+    [AutoLayout topOffset:topAnchorHeight fromViewTop:self.startDatePicker toViewTop:self.view];
+    
+    [self.startDatePicker setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     //need to apply constraints here for lab
+    [AutoLayout height:datePickerHeight forView:self.endDatePicker];
+    [AutoLayout width:self.view.bounds.size.width forView:self.endDatePicker];
+    [AutoLayout topOffset:-30.0 fromViewTop:self.endDatePicker toViewBottom:self.startDatePicker];
     
-    
-    self.endDate.frame          = CGRectMake(0, 84.0, self.view.frame.size.width, 200.0);
-    
-    [self.view addSubview:self.endDate];
+    [self.endDatePicker setTranslatesAutoresizingMaskIntoConstraints:NO];
     
 }
 
@@ -55,17 +76,12 @@
 
 -(void)doneButtonPressed{
     
-    NSDate *endDate = self.endDate.date;
     
-    if ([[NSDate date] timeIntervalSinceReferenceDate] > [endDate timeIntervalSinceReferenceDate]) {
-        //explore this during lab, can disable going to a date before today
-        self.endDate.date = [NSDate date];
-        return;
-    }
     
     RoomAvailabilityViewController *availabilityController = [[RoomAvailabilityViewController alloc]init];
     
-    availabilityController.endDate = endDate;
+    availabilityController.endDate = [self.endDatePicker date];
+    availabilityController.startDate = [self.startDatePicker date];
     
     [self.navigationController pushViewController:availabilityController animated:YES];
 }
@@ -73,6 +89,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+
+    [self.startDatePicker addTarget:self
+                             action:@selector(dateChanged:)
+                   forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)dateChanged:(UIDatePicker *)sender{
+    self.startDatePicker.minimumDate = [NSDate date];
+    
+    self.endDatePicker.minimumDate = [self.startDatePicker date];
+    [self.endDatePicker setDate:[self.startDatePicker date]];
 }
 
 

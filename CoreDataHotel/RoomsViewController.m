@@ -7,12 +7,9 @@
 //
 
 #import "RoomsViewController.h"
-
 #import "AppDelegate.h"
-
 #import "Room+CoreDataClass.h"
 #import "Room+CoreDataProperties.h"
-
 #import "AutoLayout.h"
 
 @interface RoomsViewController ()<UITableViewDataSource>

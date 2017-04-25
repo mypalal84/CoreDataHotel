@@ -18,6 +18,7 @@
 		7F2876751EAEA4850045F711 /* HotelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2876741EAEA4850045F711 /* HotelsViewController.m */; };
 		7F2876781EAEC6780045F711 /* RoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2876771EAEC6780045F711 /* RoomsViewController.m */; };
 		7FC3D6681EAFBC9B005C429E /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3D6671EAFBC9B005C429E /* DatePickerViewController.m */; };
+		7FC3D66B1EAFCF91005C429E /* RoomAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3D66A1EAFCF91005C429E /* RoomAvailabilityViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		7F2876771EAEC6780045F711 /* RoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomsViewController.m; sourceTree = "<group>"; };
 		7FC3D6661EAFBC9B005C429E /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		7FC3D6671EAFBC9B005C429E /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		7FC3D6691EAFCF91005C429E /* RoomAvailabilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomAvailabilityViewController.h; sourceTree = "<group>"; };
+		7FC3D66A1EAFCF91005C429E /* RoomAvailabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomAvailabilityViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 			children = (
 				7FC3D6661EAFBC9B005C429E /* DatePickerViewController.h */,
 				7FC3D6671EAFBC9B005C429E /* DatePickerViewController.m */,
+				7FC3D6691EAFCF91005C429E /* RoomAvailabilityViewController.h */,
+				7FC3D66A1EAFCF91005C429E /* RoomAvailabilityViewController.m */,
 				7F2876541EAE5F360045F711 /* AppDelegate.h */,
 				7F2876551EAE5F360045F711 /* AppDelegate.m */,
 				7F2876571EAE5F360045F711 /* ViewController.h */,
@@ -202,6 +207,7 @@
 				7F2876591EAE5F360045F711 /* ViewController.m in Sources */,
 				7F28765F1EAE5F360045F711 /* CoreDataHotel.xcdatamodeld in Sources */,
 				7F2876561EAE5F360045F711 /* AppDelegate.m in Sources */,
+				7FC3D66B1EAFCF91005C429E /* RoomAvailabilityViewController.m in Sources */,
 				7F2876751EAEA4850045F711 /* HotelsViewController.m in Sources */,
 				7F2876781EAEC6780045F711 /* RoomsViewController.m in Sources */,
 				7F2876531EAE5F360045F711 /* main.m in Sources */,

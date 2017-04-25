@@ -7,11 +7,8 @@
 //
 
 #import "ViewController.h"
-
 #import "AutoLayout.h"
-
 #import "HotelsViewController.h"
-
 #import "DatePickerViewController.h"
 
 @interface ViewController ()

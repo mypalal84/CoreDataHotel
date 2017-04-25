@@ -7,9 +7,12 @@
 //
 
 #import "DatePickerViewController.h"
+#import "RoomAvailabilityViewController.h"
+#import "AutoLayout.h"
 
 @interface DatePickerViewController ()
 
+@property(strong, nonatomic) UIDatePicker *startDate;
 @property(strong, nonatomic) UIDatePicker *endDate;
 
 @end
@@ -24,6 +27,21 @@
     [self setupDoneButton];
 
     [self.view setBackgroundColor:[UIColor whiteColor]];
+}
+
+-(void)setupDatePickers{
+    
+    self.endDate                = [[UIDatePicker alloc]init];
+    
+    self.endDate.datePickerMode = UIDatePickerModeDate;
+    
+    //need to apply constraints here for lab
+    
+    
+    self.endDate.frame          = CGRectMake(0, 84.0, self.view.frame.size.width, 200.0);
+    
+    [self.view addSubview:self.endDate];
+    
 }
 
 //finish this for lab
@@ -45,23 +63,15 @@
         return;
     }
     
+    RoomAvailabilityViewController *availabilityController = [[RoomAvailabilityViewController alloc]init];
+    
+    availabilityController.endDate = endDate;
+    
+    [self.navigationController pushViewController:availabilityController animated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-}
-
--(void)setupDatePickers{
-
-    self.endDate                = [[UIDatePicker alloc]init];
-
-    self.endDate.datePickerMode = UIDatePickerModeDate;
-
-    //need to apply constraints here for lab
-    self.endDate.frame          = CGRectMake(0, 84.0, self.view.frame.size.width, 200.0);
-
-    [self.view addSubview:self.endDate];
 
 }
 

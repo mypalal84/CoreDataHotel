@@ -8,10 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-
 #import "Hotel+CoreDataClass.h"
 #import "Hotel+CoreDataProperties.h"
-
 #import "Room+CoreDataClass.h"
 #import "Room+CoreDataProperties.h"
 

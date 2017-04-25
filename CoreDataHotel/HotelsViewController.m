@@ -7,14 +7,10 @@
 //
 
 #import "HotelsViewController.h"
-
 #import "AppDelegate.h"
-
 #import "Hotel+CoreDataClass.h"
 #import "Hotel+CoreDataProperties.h"
-
 #import "AutoLayout.h"
-
 #import "RoomsViewController.h"
 
 @interface HotelsViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -56,7 +52,7 @@
 
     NSFetchRequest *request         = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
 
-        NSError *fetchError;
+    NSError *fetchError;
 
     NSArray *hotels                 = [context executeFetchRequest:request error:&fetchError];
 

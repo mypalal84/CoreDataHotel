@@ -29,45 +29,45 @@
 
 -(void)loadView{
     [super loadView];
-    
-    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+
+    self.tableView                  = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     [self allHotels];
-    
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
+
+    self.tableView.delegate         = self;
+    self.tableView.dataSource       = self;
+
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
-    
+
 }
 
 -(NSArray *)allHotels{
-    
+
     if(!_allHotels){
-        
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        
-        NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
-        
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
-        
+
+    AppDelegate *appDelegate        = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+
+    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
+
+    NSFetchRequest *request         = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+
         NSError *fetchError;
-        
-        NSArray *hotels = [context executeFetchRequest:request error:&fetchError];
-        
+
+    NSArray *hotels                 = [context executeFetchRequest:request error:&fetchError];
+
         if(fetchError){
             NSLog(@"There was an error fetching hotels from core data.");
         }
-        
-        _allHotels = hotels;
+
+    _allHotels                      = hotels;
     }
     return _allHotels;
-    
+
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -75,23 +75,23 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotelCell" forIndexPath:indexPath];
-    
-    NSArray *hotels = _allHotels;
-    Hotel *currentHotel = hotels[indexPath.row];
-    cell.textLabel.text = currentHotel.name;
-    
+
+    UITableViewCell *cell           = [tableView dequeueReusableCellWithIdentifier:@"HotelCell" forIndexPath:indexPath];
+
+    NSArray *hotels                 = _allHotels;
+    Hotel *currentHotel             = hotels[indexPath.row];
+    cell.textLabel.text             = currentHotel.name;
+
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    RoomsViewController *roomsVC = [[RoomsViewController alloc]init];
-    roomsVC.selectedHotel = self.allHotels[indexPath.row];
+
+
+    RoomsViewController *roomsVC    = [[RoomsViewController alloc]init];
+    roomsVC.selectedHotel           = self.allHotels[indexPath.row];
     [self.navigationController pushViewController:roomsVC animated:YES];
-    
+
 }
 
 

@@ -46,6 +46,7 @@
 +(NSLayoutConstraint *)centerYFrom:(UIView *)view toView:(UIView *)otherView withOffset:(CGFloat)offset;
 
 + (NSLayoutConstraint *)topOffset:(CGFloat)offset fromViewTop:(UIView *)view toViewBottom:(UIView *)otherView;
+
 + (NSLayoutConstraint *)topOffset:(CGFloat)offset fromViewTop:(UIView *)view toViewTop:(UIView *)otherView;
 
 @end

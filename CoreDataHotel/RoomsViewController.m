@@ -27,8 +27,8 @@
 
 -(void)loadView{
     [super loadView];
-    
-    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+
+    self.tableView            = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
 //    [self allRooms];
 }
@@ -36,9 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
-    self.allRooms = [[self.selectedHotel rooms]allObjects];
+    self.allRooms             = [[self.selectedHotel rooms]allObjects];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"RoomCell"];
-    
+
 }
 
 
@@ -47,13 +47,13 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RoomCell" forIndexPath:indexPath];
-    
-    Room *room = self.allRooms[indexPath.row];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", room.number];
-    
+
+    UITableViewCell *cell     = [tableView dequeueReusableCellWithIdentifier:@"RoomCell" forIndexPath:indexPath];
+
+    Room *room                = self.allRooms[indexPath.row];
+
+    cell.textLabel.text       = [NSString stringWithFormat:@"%d", room.number];
+
     return cell;
 }
 

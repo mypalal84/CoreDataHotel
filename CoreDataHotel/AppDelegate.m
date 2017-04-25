@@ -29,66 +29,66 @@
     // Override point for customization after application launch.
     [self setupRootViewController];
     [self bootstrapApp];
-    
+
     return YES;
 }
 
 -(void)bootstrapApp{
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
-    
+
+NSFetchRequest *request         = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+
     NSError *error;
-    
-    NSInteger count = [self.persistentContainer.viewContext countForFetchRequest:request error:&error];
-    
+
+NSInteger count                 = [self.persistentContainer.viewContext countForFetchRequest:request error:&error];
+
     if(error) {
         NSLog(@"%@", error.localizedDescription);
     }
-    
+
     if(count == 0){
-        
-        NSDictionary *hotels = [[NSDictionary alloc]init];
-        
-        NSString *path = [[NSBundle mainBundle]pathForResource:@"hotels" ofType:@"json"];
-        
-        NSData *jsonData = [NSData dataWithContentsOfFile:path];
-        
+
+NSDictionary *hotels            = [[NSDictionary alloc]init];
+
+NSString *path                  = [[NSBundle mainBundle]pathForResource:@"hotels" ofType:@"json"];
+
+NSData *jsonData                = [NSData dataWithContentsOfFile:path];
+
         NSError *jsonError;
-        
-        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&jsonError];
-        
+
+NSDictionary *jsonDictionary    = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&jsonError];
+
         if(jsonError){
             NSLog(@"%@", jsonError.localizedDescription);
         }
-        
-        hotels = jsonDictionary[@"Hotels"];
-        
+
+hotels                          = jsonDictionary[@"Hotels"];
+
         for (NSDictionary *hotel in hotels) {
-            
-            Hotel *newHotel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.persistentContainer.viewContext];
-            
-            newHotel.name = hotel[@"name"];
-            newHotel.location = hotel[@"location"];
-            newHotel.stars = (NSInteger)hotel[@"stars"];
-            
+
+Hotel *newHotel                 = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.persistentContainer.viewContext];
+
+newHotel.name                   = hotel[@"name"];
+newHotel.location               = hotel[@"location"];
+newHotel.stars                  = (NSInteger)hotel[@"stars"];
+
             for (NSDictionary *room in hotel[@"rooms"]) {
-                
-                Room *newRoom = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.persistentContainer.viewContext];
-                
-                NSNumber *number = room[@"number"];
-                newRoom.number = [number integerValue];
-                newRoom.beds = (NSInteger)room[@"beds"];
-                newRoom.rate = (NSInteger)room[@"rate"];
-                
-                newRoom.hotel = newHotel;
-                
+
+Room *newRoom                   = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.persistentContainer.viewContext];
+
+NSNumber *number                = room[@"number"];
+newRoom.number                  = [number integerValue];
+newRoom.beds                    = (NSInteger)room[@"beds"];
+newRoom.rate                    = (NSInteger)room[@"rate"];
+
+newRoom.hotel                   = newHotel;
+
             }
         }
-        
+
         NSError *saveError;
-        
+
         [self.persistentContainer.viewContext save:&saveError];
-        
+
         if(saveError){
             NSLog(@"There was an error saving to core data.");
         } else {
@@ -98,15 +98,15 @@
 }
 
 -(void)setupRootViewController{
-    
-    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
-    
-    self.viewController = [[ViewController alloc]init];
-    
-    self.navController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
-    
-    self.window.rootViewController = self.navController;
-    
+
+self.window                     = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+
+self.viewController             = [[ViewController alloc]init];
+
+self.navController              = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+
+self.window.rootViewController  = self.navController;
+
     [self.window makeKeyAndVisible];
 }
 
@@ -148,12 +148,12 @@
     // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
     @synchronized (self) {
         if (_persistentContainer == nil) {
-            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"CoreDataHotel"];
+_persistentContainer            = [[NSPersistentContainer alloc] initWithName:@"CoreDataHotel"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
                     // Replace this implementation with code to handle the error appropriately.
                     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    
+
                     /*
                      Typical reasons for an error here include:
                      * The parent directory does not exist, cannot be created, or disallows writing.
@@ -168,15 +168,15 @@
             }];
         }
     }
-    
+
     return _persistentContainer;
 }
 
 #pragma mark - Core Data Saving support
 
 - (void)saveContext {
-    NSManagedObjectContext *context = self.persistentContainer.viewContext;
-    NSError *error = nil;
+NSManagedObjectContext *context = self.persistentContainer.viewContext;
+NSError *error                  = nil;
     if ([context hasChanges] && ![context save:&error]) {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

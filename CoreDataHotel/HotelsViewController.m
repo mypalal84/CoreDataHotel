@@ -15,7 +15,9 @@
 
 #import "AutoLayout.h"
 
-@interface HotelsViewController ()<UITableViewDataSource>
+#import "RoomsViewController.h"
+
+@interface HotelsViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property(strong, nonatomic)NSArray *allHotels;
 
@@ -31,14 +33,13 @@
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     [self allHotels];
-//    [AutoLayout ]
     
-    //add tableView as subview and apply constraints
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
@@ -83,5 +84,15 @@
     
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    RoomsViewController *roomsVC = [[RoomsViewController alloc]init];
+    roomsVC.selectedHotel = self.allHotels[indexPath.row];
+    [self.navigationController pushViewController:roomsVC animated:YES];
+    
+}
+
 
 @end

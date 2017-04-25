@@ -37,4 +37,15 @@
 +(NSLayoutConstraint *)bottomConstraintFrom:(UIView *)view
                                        toView:(UIView *)otherView;
 
++(NSLayoutConstraint *)width:(CGFloat)width forView:(UIView *)view;
+
++(NSLayoutConstraint *)height:(CGFloat)height forView:(UIView *)view;
+
++(NSLayoutConstraint *)centerXFrom:(UIView *)view toView:(UIView *)otherView withOffset:(CGFloat)offset;
+
++(NSLayoutConstraint *)centerYFrom:(UIView *)view toView:(UIView *)otherView withOffset:(CGFloat)offset;
+
++ (NSLayoutConstraint *)topOffset:(CGFloat)offset fromViewTop:(UIView *)view toViewBottom:(UIView *)otherView;
++ (NSLayoutConstraint *)topOffset:(CGFloat)offset fromViewTop:(UIView *)view toViewTop:(UIView *)otherView;
+
 @end

@@ -28,22 +28,35 @@
 
 -(void)setupLayout{
     
-//    float navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);//navbar height is 44
-    
+    CGFloat navBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);//navbar height is 44
+    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat topAnchorHeight = navBarHeight + statusBarHeight;
+    CGFloat viewHeight = self.view.bounds.size.height - topAnchorHeight;
+    CGFloat buttonHeight = viewHeight / 3;
     
     UIButton *browseButton = [self createButtonWithTitle:@"Browse"];
     UIButton *bookButton = [self createButtonWithTitle:@"Book"];
     UIButton *lookupButton = [self createButtonWithTitle:@"Look Up"];
     
-    browseButton.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.75 alpha:1.0];
+    browseButton.backgroundColor = [UIColor colorWithRed:0.91 green:0.81 blue:0.03 alpha:1.0];
     
+    bookButton.backgroundColor = [UIColor colorWithRed:0.03 green:0.85 blue:0.96 alpha:1.0];
+    
+    lookupButton.backgroundColor = [UIColor colorWithRed:0.89 green:0.53 blue:0.63 alpha:1.0];
+    
+    [AutoLayout height:buttonHeight forView:browseButton];
     [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
     [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
+    [AutoLayout topOffset:topAnchorHeight fromViewTop:browseButton toViewTop:self.view];
     
-//    [AutoLayout topConstraintFrom:browseButton toView:self.view.bounds.size.height -44];
-//    [AutoLayout bottomConstraintFrom:browseButton toView:self.view];
-    NSLayoutConstraint *browseHeight = [AutoLayout equalHeightConstraintFromView:browseButton toView:self.view withMultiplier:0.33];
-    
+    [AutoLayout height:buttonHeight forView:bookButton];
+    [AutoLayout width:self.view.bounds.size.width forView:bookButton];
+    [AutoLayout centerXFrom:bookButton toView:self.view withOffset:0];
+    [AutoLayout topOffset:0 fromViewTop:bookButton toViewBottom:browseButton];
+
+    [AutoLayout height:buttonHeight forView:lookupButton];
+    [AutoLayout width:self.view.bounds.size.width forView:lookupButton];
+    [AutoLayout bottomConstraintFrom:lookupButton toView:self.view];
     
     
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];

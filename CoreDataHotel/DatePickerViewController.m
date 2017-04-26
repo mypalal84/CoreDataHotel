@@ -23,10 +23,37 @@
     [super loadView];
 
     [self setupDatePickers];
-    
     [self setupDoneButton];
+    [self setupLabels];
 
     [self.view setBackgroundColor:[UIColor whiteColor]];
+}
+
+-(void)setupLabels{
+    
+    UILabel *startDateLabel = [[UILabel alloc]init];
+    UILabel *endDateLabel = [[UILabel alloc]init];
+    
+    [self.view addSubview:startDateLabel];
+    [self.view addSubview:endDateLabel];
+    [startDateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [AutoLayout width:self.view.bounds.size.width forView:startDateLabel];
+    [AutoLayout topOffset:0 fromViewTop:startDateLabel toViewTop:self.startDatePicker];
+    [AutoLayout height:30 forView:startDateLabel];
+    [AutoLayout centerXFrom:startDateLabel toView:self.view withOffset:0];
+    self.startDatePicker.backgroundColor = [UIColor redColor];
+    startDateLabel.text = @"Start Date";
+    startDateLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [endDateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [AutoLayout width:self.view.bounds.size.width forView:endDateLabel];
+    [AutoLayout topOffset:0 fromViewTop:endDateLabel toViewTop:self.endDatePicker];
+    [AutoLayout height:30 forView:endDateLabel];
+    [AutoLayout centerXFrom:endDateLabel toView:self.view withOffset:0];
+    self.endDatePicker.backgroundColor = [UIColor greenColor];
+    endDateLabel.text = @"End Date";
+    endDateLabel.textAlignment = NSTextAlignmentCenter;
+
 }
 
 -(void)setupDatePickers{

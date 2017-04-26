@@ -38,19 +38,19 @@
     [self.view addSubview:endDateLabel];
     [startDateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [AutoLayout width:self.view.bounds.size.width forView:startDateLabel];
-    [AutoLayout topOffset:0 fromViewTop:startDateLabel toViewTop:self.startDatePicker];
+    [AutoLayout offset:0 fromViewTop:startDateLabel toViewBottom:self.topLayoutGuide];
     [AutoLayout height:30 forView:startDateLabel];
     [AutoLayout centerXFrom:startDateLabel toView:self.view withOffset:0];
-    self.startDatePicker.backgroundColor                   = [UIColor redColor];
+//    self.startDatePicker.backgroundColor                   = [UIColor redColor];
     startDateLabel.text                                    = @"Start Date";
     startDateLabel.textAlignment                           = NSTextAlignmentCenter;
 
     [endDateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [AutoLayout width:self.view.bounds.size.width forView:endDateLabel];
-    [AutoLayout topOffset:0 fromViewTop:endDateLabel toViewTop:self.endDatePicker];
+    [AutoLayout offset:-10 fromViewTop:endDateLabel toViewTop:self.endDatePicker];
     [AutoLayout height:30 forView:endDateLabel];
     [AutoLayout centerXFrom:endDateLabel toView:self.view withOffset:0];
-    self.endDatePicker.backgroundColor                     = [UIColor greenColor];
+//    self.endDatePicker.backgroundColor                     = [UIColor greenColor];
     endDateLabel.text                                      = @"End Date";
     endDateLabel.textAlignment                             = NSTextAlignmentCenter;
 
@@ -60,10 +60,6 @@
     CGFloat navBarHeight                                   = CGRectGetHeight(self.navigationController.navigationBar.frame);//navbar height is 44
     CGFloat statusBarHeight                                = [UIApplication sharedApplication].statusBarFrame.size.height;
     CGFloat topAnchorHeight                                = navBarHeight + statusBarHeight;
-    CGFloat viewHeight                                     = self.view.bounds.size.height - topAnchorHeight;
-    CGFloat datePickerHeight                               = viewHeight / 2;
-
-
 
     self.startDatePicker                                   = [[UIDatePicker alloc]init];
 
@@ -76,19 +72,21 @@
     self.endDatePicker.datePickerMode                      = UIDatePickerModeDate;
 
     [self.view addSubview:self.endDatePicker];
-
-    [AutoLayout height:datePickerHeight forView:self.startDatePicker];
-    [AutoLayout width:self.view.bounds.size.width forView:self.startDatePicker];
-    [AutoLayout topOffset:topAnchorHeight fromViewTop:self.startDatePicker toViewTop:self.view];
-
     [self.startDatePicker setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.endDatePicker setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+    [AutoLayout leadingConstraintFrom:self.startDatePicker toView:self.view];
+    [AutoLayout trailingConstraintFrom:self.startDatePicker toView:self.view];
+    [AutoLayout offset:0 fromViewTop:self.startDatePicker toViewBottom:self.topLayoutGuide];
+    [AutoLayout equalHeightConstraintFromView:self.startDatePicker toView:self.endDatePicker withMultiplier:1.0];
+
 
     //need to apply constraints here for lab
-    [AutoLayout height:datePickerHeight forView:self.endDatePicker];
-    [AutoLayout width:self.view.bounds.size.width forView:self.endDatePicker];
-    [AutoLayout topOffset:-30.0 fromViewTop:self.endDatePicker toViewBottom:self.startDatePicker];
-
-    [self.endDatePicker setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [AutoLayout leadingConstraintFrom:self.endDatePicker toView:self.view];
+    [AutoLayout trailingConstraintFrom:self.endDatePicker toView:self.view];
+    [AutoLayout offset:15 fromViewTop:self.endDatePicker toViewBottom:self.startDatePicker];
+    [AutoLayout offset:0 fromViewBottom:self.endDatePicker toViewBottom:self.view];
+    
 
 }
 

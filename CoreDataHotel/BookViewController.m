@@ -77,7 +77,7 @@
     
     CGFloat topAnchorHeight = CGRectGetHeight(self.navigationController.navigationBar.frame) + 20.0;
     
-    [AutoLayout topOffset:topAnchorHeight + 20 fromViewTop:self.firstNameTextField toViewTop:self.view];
+    [AutoLayout offset:topAnchorHeight + 20 fromViewTop:self.firstNameTextField toViewTop:self.view];
     [AutoLayout height:60 forView:self.firstNameTextField];
     [AutoLayout width:360 forView:self.firstNameTextField];
     [AutoLayout centerXFrom:self.firstNameTextField toView:self.view withOffset:0];
@@ -86,13 +86,13 @@
     [AutoLayout height:60 forView:self.lastNameTextField];
     [AutoLayout width:360 forView:self.lastNameTextField];
     [AutoLayout centerXFrom:self.lastNameTextField toView:self.view withOffset:0];
-    [AutoLayout topOffset:80 fromViewTop:self.lastNameTextField toViewTop:self.firstNameTextField];
+    [AutoLayout offset:80 fromViewTop:self.lastNameTextField toViewTop:self.firstNameTextField];
     //    [AutoLayout centerYFrom:self.lastNameTextField toView:self.view withOffset:0];
     
     [AutoLayout height:60 forView:self.emailTextField];
     [AutoLayout width:360 forView:self.emailTextField];
     [AutoLayout centerXFrom:self.emailTextField toView:self.view withOffset:0];
-    [AutoLayout topOffset:80 fromViewTop:self.emailTextField toViewTop:self.lastNameTextField];
+    [AutoLayout offset:80 fromViewTop:self.emailTextField toViewTop:self.lastNameTextField];
     
     [self.firstNameTextField becomeFirstResponder];
 }

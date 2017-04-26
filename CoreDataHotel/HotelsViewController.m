@@ -26,8 +26,11 @@
 -(void)loadView{
     [super loadView];
 
-    self.tableView                  = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView                  = [[UITableView alloc]init];
     [self.view addSubview:self.tableView];
+
+    [AutoLayout fullScreeenConstraintsWithVFLForView:self.tableView];
+    [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self allHotels];
 
 }

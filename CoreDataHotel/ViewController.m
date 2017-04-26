@@ -10,6 +10,7 @@
 #import "AutoLayout.h"
 #import "HotelsViewController.h"
 #import "DatePickerViewController.h"
+#import "LookupReservationViewController.h"
 
 @interface ViewController ()
 
@@ -43,47 +44,30 @@
 
     lookupButton.backgroundColor                   = [UIColor colorWithRed:0.89 green:0.53 blue:0.63 alpha:1.0];
 
+   
     
-    if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
-    {
-        NSLog(@"portrait");
-        [AutoLayout height:buttonHeight forView:browseButton];
-        [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
-        [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
-        [AutoLayout topOffset:topAnchorHeight fromViewTop:browseButton toViewTop:self.view];
-        
-        [AutoLayout height:buttonHeight forView:bookButton];
-        [AutoLayout leadingConstraintFrom:bookButton toView:self.view];
-        [AutoLayout trailingConstraintFrom:bookButton toView:self.view];
-        [AutoLayout topOffset:0 fromViewTop:bookButton toViewBottom:browseButton];
-        
-        [AutoLayout height:buttonHeight forView:lookupButton];
-        [AutoLayout leadingConstraintFrom:lookupButton toView:self.view];
-        [AutoLayout trailingConstraintFrom:lookupButton toView:self.view];
-        [AutoLayout bottomConstraintFrom:lookupButton toView:self.view];
-    }
-    else if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-    {
-        NSLog(@"landscape");
-        [AutoLayout height:buttonHeight forView:browseButton];
-        [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
-        [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
-        [AutoLayout topOffset:topAnchorHeight fromViewTop:browseButton toViewTop:self.view];
-        
-        [AutoLayout height:buttonHeight forView:bookButton];
-        [AutoLayout leadingConstraintFrom:bookButton toView:self.view];
-        [AutoLayout trailingConstraintFrom:bookButton toView:self.view];
-        [AutoLayout topOffset:0 fromViewTop:bookButton toViewBottom:browseButton];
-        
-        [AutoLayout height:buttonHeight forView:lookupButton];
-        [AutoLayout leadingConstraintFrom:lookupButton toView:self.view];
-        [AutoLayout trailingConstraintFrom:lookupButton toView:self.view];
-        [AutoLayout bottomConstraintFrom:lookupButton toView:self.view];
-    }
+    [AutoLayout leadingConstraintFrom:browseButton toView:self.view];
+    [AutoLayout trailingConstraintFrom:browseButton toView:self.view];
+    [AutoLayout offset:0 fromViewTop:browseButton toViewBottom:self.topLayoutGuide];
+    
+    [AutoLayout leadingConstraintFrom:bookButton toView:self.view];
+    [AutoLayout trailingConstraintFrom:bookButton toView:self.view];
+    [AutoLayout offset:0 fromViewTop:bookButton toViewBottom:browseButton];
+    [AutoLayout equalHeightConstraintFromView:browseButton toView:bookButton withMultiplier:1.0];
+    
+    [AutoLayout leadingConstraintFrom:lookupButton toView:self.view];
+    [AutoLayout trailingConstraintFrom:lookupButton toView:self.view];
+    [AutoLayout bottomConstraintFrom:lookupButton toView:self.view];
+    [AutoLayout offset:0 fromViewTop:lookupButton toViewBottom:bookButton];
+    [AutoLayout equalHeightConstraintFromView:bookButton toView:lookupButton withMultiplier:1.0];
+    
+    
     
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
 
     [bookButton addTarget:self action:@selector(bookButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+    
+    [lookupButton addTarget:self action:@selector(lookupButtonSelected) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)browseButtonSelected{
@@ -100,6 +84,14 @@
 
     [self.navigationController pushViewController:datePickerController animated:YES];
 
+}
+
+-(void)lookupButtonSelected{
+    
+    LookupReservationViewController *lookupReservationController = [[LookupReservationViewController alloc]init];
+    
+    [self.navigationController pushViewController:lookupReservationController animated:YES];
+    
 }
 
 -(UIButton *)createButtonWithTitle:(NSString *)title{

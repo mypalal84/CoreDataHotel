@@ -8,6 +8,11 @@
 
 #import "BookViewController.h"
 #import "AutoLayout.h"
+#import "Guest+CoreDataClass.h"
+#import "Guest+CoreDataProperties.h"
+#import "AppDelegate.h"
+#import "Reservation+CoreDataClass.h"
+#import "Reservation+CoreDataProperties.h"
 
 @interface BookViewController ()
 
@@ -75,5 +80,18 @@
 
 }
 
+- (void)bookButtonPressed{
+    //TODO: Assign lastname, email to guest
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+//    Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.persistentContainer.viewContext];
+    
+    Guest *guest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:appDelegate.persistentContainer.viewContext];
+    
+    guest.firstName = self.firstNameTextField.text;
+    guest.lastName = self.lastNameTextField.text;
+    guest.email = self.emailTextField.text;
+    
+}
 
 @end

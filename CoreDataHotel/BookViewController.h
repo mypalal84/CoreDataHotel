@@ -12,5 +12,7 @@
 @interface BookViewController : UIViewController
 
 @property(strong, nonatomic)Room *selectedRoom;
+@property(strong, nonatomic)NSDate *startDate;
+@property(strong, nonatomic)NSDate *endDate;
 
 @end

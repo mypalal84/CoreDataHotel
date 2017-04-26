@@ -120,7 +120,7 @@
 //    Room *currentRoom = self.availableRooms[indexPath.row];
     Room *currentRoom = [self.availableRooms objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%i", currentRoom.number];
+    cell.textLabel.text = [NSString stringWithFormat:@"Room: %i", currentRoom.number];
     
     return cell;
     
@@ -128,13 +128,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    Room *room = [self.availableRooms objectAtIndexPath:indexPath];
+    
     BookViewController *bookVC    = [[BookViewController alloc]init];
     
-    Room *room = [self.availableRooms objectAtIndexPath:indexPath];
-//    bookVC.selectedRoom           = self.availableRooms[indexPath.row];
+    bookVC.selectedRoom = room;
     
+    bookVC.startDate = self.startDate;
     
-    
+    bookVC.endDate = self.endDate;
 
     [self.navigationController pushViewController:bookVC animated:YES];
 }

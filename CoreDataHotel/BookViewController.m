@@ -32,7 +32,19 @@
     self.firstNameTextField = [[UITextField alloc]init];
     self.lastNameTextField = [[UITextField alloc]init];
     self.emailTextField = [[UITextField alloc]init];
+//    self.firstNameTextField.backgroundColor = [UIColor yellowColor];
+//    self.lastNameTextField.backgroundColor = [UIColor redColor];
+//    self.emailTextField.backgroundColor = [UIColor blueColor];
+
+    self.firstNameTextField.placeholder = @"First Name";
+    self.lastNameTextField.placeholder = @"Last Name";
+    self.emailTextField.placeholder = @"Email";
     
+    [self.firstNameTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    
+    [self.lastNameTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    
+    [self.emailTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [self.firstNameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.lastNameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.emailTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -54,7 +66,7 @@
     [AutoLayout height:60 forView:self.emailTextField];
     [AutoLayout width:200 forView:self.emailTextField];
     [AutoLayout centerXFrom:self.emailTextField toView:self.view withOffset:0];
-    [AutoLayout topOffset:140 fromViewTop:self.emailTextField toViewTop:self.lastNameTextField];
+    [AutoLayout topOffset:100 fromViewTop:self.emailTextField toViewTop:self.lastNameTextField];
 
 }
 

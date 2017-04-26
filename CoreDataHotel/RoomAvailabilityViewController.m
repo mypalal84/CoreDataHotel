@@ -13,6 +13,7 @@
 #import "Reservation+CoreDataProperties.h"
 #import "Room+CoreDataClass.h"
 #import "Room+CoreDataProperties.h"
+#import "BookViewController.h"
 
 @interface RoomAvailabilityViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -82,7 +83,9 @@
     [self.view addSubview:self.tableView];
     
     self.tableView.dataSource = self;
-
+    
+    self.tableView.delegate = self;
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -108,8 +111,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //set this up to show rooms
-    
+    BookViewController *bookVC    = [[BookViewController alloc]init];
+    bookVC.selectedRoom           = self.availableRooms[indexPath.row];
+    [self.navigationController pushViewController:bookVC animated:YES];
 }
 
 @end

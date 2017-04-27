@@ -19,6 +19,8 @@
 #import "Room+CoreDataClass.h"
 #import "Room+CoreDataProperties.h"
 
+@import Crashlytics;
+
 @interface BookViewController ()
 
 @property(strong, nonatomic)UITextField *firstNameTextField;
@@ -160,9 +162,15 @@
     
     if (saveError) {
         NSLog(@"Save error: %@", saveError);
+        
+        NSDictionary *attributesDictionary = @{@"Save Error" : saveError.localizedDescription};
+        
+        [Answers logCustomEventWithName:@"Save Reservation Error" customAttributes:attributesDictionary];
     } else {
         NSLog(@"Reservation saved successfully");
         
+        [Answers logCustomEventWithName:@"Saved Reservation" customAttributes:nil];
+                
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     

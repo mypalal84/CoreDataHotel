@@ -23,6 +23,8 @@
 		7FEB4C4B1EB1144C00CA82E2 /* AutoLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB4C4A1EB1144C00CA82E2 /* AutoLayoutTests.m */; };
 		7FEB4C4E1EB1604C00CA82E2 /* LookupReservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB4C4D1EB1604C00CA82E2 /* LookupReservationViewController.m */; };
 		7FEB4C511EB2607500CA82E2 /* MappingModel1.0-1.1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB4C501EB2607500CA82E2 /* MappingModel1.0-1.1.xcmappingmodel */; };
+		7FEB4C561EB26E7600CA82E2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEB4C541EB26E7600CA82E2 /* Fabric.framework */; };
+		7FEB4C571EB26E7600CA82E2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEB4C551EB26E7600CA82E2 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		7FEB4C4D1EB1604C00CA82E2 /* LookupReservationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookupReservationViewController.m; sourceTree = "<group>"; };
 		7FEB4C4F1EB25DB600CA82E2 /* CoreDataHotel1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataHotel1.1.xcdatamodel; sourceTree = "<group>"; };
 		7FEB4C501EB2607500CA82E2 /* MappingModel1.0-1.1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "MappingModel1.0-1.1.xcmappingmodel"; sourceTree = "<group>"; };
+		7FEB4C541EB26E7600CA82E2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		7FEB4C551EB26E7600CA82E2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FEB4C571EB26E7600CA82E2 /* Crashlytics.framework in Frameworks */,
+				7FEB4C561EB26E7600CA82E2 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +98,8 @@
 				7F2876501EAE5F360045F711 /* CoreDataHotel */,
 				7FEB4C411EB111C900CA82E2 /* CoreDataHotelTests */,
 				7F28764F1EAE5F360045F711 /* Products */,
+				7FEB4C541EB26E7600CA82E2 /* Fabric.framework */,
+				7FEB4C551EB26E7600CA82E2 /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,6 +195,7 @@
 				7F28764A1EAE5F360045F711 /* Sources */,
 				7F28764B1EAE5F360045F711 /* Frameworks */,
 				7F28764C1EAE5F360045F711 /* Resources */,
+				7FEB4C531EB26E5100CA82E2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -275,6 +284,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7FEB4C531EB26E5100CA82E2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 555e6759def5814d27bcb36ef078ba2793b634c1 6e5b1462abbcf4d8022be3ca95be703086bf56cdbe4f7df19fa750386dd019d7";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7F28764A1EAE5F360045F711 /* Sources */ = {
@@ -423,6 +448,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2E5N5854VJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CoreDataHotel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexcahn.CoreDataHotel;
@@ -435,6 +464,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2E5N5854VJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CoreDataHotel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexcahn.CoreDataHotel;

@@ -28,12 +28,6 @@
 
 -(void)setupLayout{
 
-    CGFloat navBarHeight                           = CGRectGetHeight(self.navigationController.navigationBar.frame);//navbar height is 44
-    CGFloat statusBarHeight                        = [UIApplication sharedApplication].statusBarFrame.size.height;
-    CGFloat topAnchorHeight                        = navBarHeight + statusBarHeight;
-    CGFloat viewHeight                             = self.view.bounds.size.height - topAnchorHeight;
-    CGFloat buttonHeight                           = viewHeight / 3;
-
     UIButton *browseButton                         = [self createButtonWithTitle:@"Browse"];
     UIButton *bookButton                           = [self createButtonWithTitle:@"Book"];
     UIButton *lookupButton                         = [self createButtonWithTitle:@"Look Up"];

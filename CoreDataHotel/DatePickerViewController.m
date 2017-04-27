@@ -57,9 +57,6 @@
 }
 
 -(void)setupDatePickers{
-    CGFloat navBarHeight                                   = CGRectGetHeight(self.navigationController.navigationBar.frame);//navbar height is 44
-    CGFloat statusBarHeight                                = [UIApplication sharedApplication].statusBarFrame.size.height;
-    CGFloat topAnchorHeight                                = navBarHeight + statusBarHeight;
 
     self.startDatePicker                                   = [[UIDatePicker alloc]init];
 

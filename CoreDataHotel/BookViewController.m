@@ -36,6 +36,8 @@
     
     [self setupTextFields];
     
+    [self setupLabels];
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 
@@ -45,6 +47,37 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonPressed:)]];
     
+}
+
+-(void)setupLabels{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    
+    
+    UILabel *hotelLabel = [[UILabel alloc]init];
+    [self.view addSubview:hotelLabel];
+    [hotelLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    hotelLabel.text = [NSString stringWithFormat:@"Hotel: %@ Room - %i", self.selectedRoom.hotel.name, self.selectedRoom.number];
+    [AutoLayout offset:10 fromViewTop:hotelLabel toViewBottom:self.emailTextField];
+    [AutoLayout height:20 forView:hotelLabel];
+    [AutoLayout centerXFrom:hotelLabel toView:self.view withOffset:0];
+    
+    UILabel *startDateLabel = [[UILabel alloc]init];
+    [self.view addSubview:startDateLabel];
+    [startDateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    startDateLabel.text = [NSString stringWithFormat:@"Check-In: %@", [dateFormatter stringFromDate:self.startDate]];
+    [AutoLayout offset:10 fromViewTop:startDateLabel toViewBottom:hotelLabel];
+    [AutoLayout height:20 forView:startDateLabel];
+    [AutoLayout centerXFrom:startDateLabel toView:self.view withOffset:0];
+    
+    UILabel *endDateLabel = [[UILabel alloc]init];
+    [self.view addSubview:endDateLabel];
+    [endDateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    endDateLabel.text = [NSString stringWithFormat:@"Check-Out: %@", [dateFormatter stringFromDate:self.endDate]];
+    [AutoLayout offset:10 fromViewTop:endDateLabel toViewBottom:startDateLabel];
+    [AutoLayout height:20 forView:endDateLabel];
+    [AutoLayout centerXFrom:endDateLabel toView:self.view withOffset:0];
 }
 
 -(void)setupTextFields{
@@ -103,7 +136,6 @@
 }
 
 - (void)saveButtonPressed:(UIBarButtonItem *)sender{
-    //TODO: Assign lastname, email to guest
     AppDelegate *appDelegate            = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
     

@@ -77,7 +77,7 @@ Room *newRoom                   = [NSEntityDescription insertNewObjectForEntityF
 NSNumber *number                = room[@"number"];
 newRoom.number                  = [number integerValue];
 newRoom.beds                    = (NSInteger)room[@"beds"];
-newRoom.rate                    = (NSInteger)room[@"rate"];
+newRoom.cost                    = (NSInteger)room[@"cost"];
 
 newRoom.hotel                   = newHotel;
 

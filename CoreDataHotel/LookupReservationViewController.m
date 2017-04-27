@@ -30,6 +30,8 @@
 
 @implementation LookupReservationViewController
 
+BOOL isSearching;
+
 -(void)loadView{
     [super loadView];
     
@@ -110,16 +112,24 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.allReservations.count;
+    if (isSearching) {
+        return self.filteredReservations.count;
+    }
+    else {
+        return self.allReservations.count;
+    }
+    
 }
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell *cell     = [tableView dequeueReusableCellWithIdentifier:@"Reservation" forIndexPath:indexPath];
     
-    NSArray *reservations = self.allReservations;
-    
-    Reservation *reservation = reservations[indexPath.row];
+    Reservation *reservation;
+    if (self.filteredReservations == nil) {
+        reservation = self.allReservations[indexPath.row];
+    } else {
+        reservation = self.filteredReservations[indexPath.row];
+    }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
@@ -133,6 +143,7 @@
 #pragma mark - UISearchBar
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    isSearching = YES;
     
     self.filteredReservations = [[NSMutableArray alloc]init];
     self.filteredReservations = [[self.allReservations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"guest.firstName CONTAINS %@ OR guest.lastName CONTAINS %@", searchBar.text, searchBar.text]] mutableCopy];
@@ -141,7 +152,7 @@
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
+    isSearching = YES;
     self.filteredReservations = [[NSMutableArray alloc]init];
     self.filteredReservations = [[self.allReservations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"guest.firstName CONTAINS %@ OR guest.lastName CONTAINS %@", searchBar.text, searchBar.text]]mutableCopy];
     
@@ -157,10 +168,14 @@
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    self.filteredReservations = [[NSMutableArray alloc]init];
-    self.filteredReservations = [[self.allReservations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"guest.firstName CONTAINS %@ OR guest.lastName CONTAINS %@", searchBar.text, searchBar.text]] mutableCopy];
+    if (searchBar.text != nil) {
+        
+        self.filteredReservations = [[NSMutableArray alloc]init];
+        self.filteredReservations = [[self.allReservations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"guest.firstName CONTAINS %@ OR guest.lastName CONTAINS %@", searchBar.text, searchBar.text]] mutableCopy];
+    }
+    isSearching = NO;
     
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 @end

@@ -18,6 +18,7 @@
 #import "Hotel+CoreDataProperties.h"
 #import "Room+CoreDataClass.h"
 #import "Room+CoreDataProperties.h"
+#import "HotelService.h"
 
 @import Crashlytics;
 
@@ -137,42 +138,13 @@
 }
 
 - (void)saveButtonPressed:(UIBarButtonItem *)sender{
-    AppDelegate *appDelegate            = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
-    
-    Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:context];
-    
-    reservation.startDate = self.startDate;
-    reservation.endDate = self.endDate;
-    reservation.room = self.selectedRoom;
-    
-    self.selectedRoom.reservation = reservation;
-    
-    Guest *newGuest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:context];
-    
-    reservation.guest = newGuest;
-    
-    newGuest.firstName                     = self.firstNameTextField.text;
-    newGuest.lastName                      = self.lastNameTextField.text;
-    newGuest.email                         = self.emailTextField.text;
-    
-    NSError *saveError;
-    [context save:&saveError];
-    
-    if (saveError) {
-        NSLog(@"Save error: %@", saveError);
-        
-        NSDictionary *attributesDictionary = @{@"Save Error" : saveError.localizedDescription};
-        
-        [Answers logCustomEventWithName:@"Save Reservation Error" customAttributes:attributesDictionary];
-    } else {
-        NSLog(@"Reservation saved successfully");
-        
-        [Answers logCustomEventWithName:@"Saved Reservation" customAttributes:nil];
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    
+    [HotelService saveReservationWithStartDate:self.startDate
+                                       endDate:self.endDate
+                                  selectedRoom:self.selectedRoom
+                                     firstName:self.firstNameTextField.text
+                                      lastName:self.lastNameTextField.text
+                                         email:self.emailTextField.text];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

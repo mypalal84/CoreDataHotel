@@ -25,7 +25,7 @@
 		7FEB4C511EB2607500CA82E2 /* MappingModel1.0-1.1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB4C501EB2607500CA82E2 /* MappingModel1.0-1.1.xcmappingmodel */; };
 		7FEB4C561EB26E7600CA82E2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEB4C541EB26E7600CA82E2 /* Fabric.framework */; };
 		7FEB4C571EB26E7600CA82E2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEB4C551EB26E7600CA82E2 /* Crashlytics.framework */; };
-		7FEB4C5C1EB290AA00CA82E2 /* HotelServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB4C5B1EB290AA00CA82E2 /* HotelServiceController.m */; };
+		7FEB4C5C1EB290AA00CA82E2 /* HotelService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB4C5B1EB290AA00CA82E2 /* HotelService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +71,8 @@
 		7FEB4C501EB2607500CA82E2 /* MappingModel1.0-1.1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "MappingModel1.0-1.1.xcmappingmodel"; sourceTree = "<group>"; };
 		7FEB4C541EB26E7600CA82E2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7FEB4C551EB26E7600CA82E2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		7FEB4C5A1EB290AA00CA82E2 /* HotelServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelServiceController.h; sourceTree = "<group>"; };
-		7FEB4C5B1EB290AA00CA82E2 /* HotelServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelServiceController.m; sourceTree = "<group>"; };
+		7FEB4C5A1EB290AA00CA82E2 /* HotelService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelService.h; sourceTree = "<group>"; };
+		7FEB4C5B1EB290AA00CA82E2 /* HotelService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +159,8 @@
 		7F2876701EAE6D650045F711 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7FEB4C5A1EB290AA00CA82E2 /* HotelServiceController.h */,
-				7FEB4C5B1EB290AA00CA82E2 /* HotelServiceController.m */,
+				7FEB4C5A1EB290AA00CA82E2 /* HotelService.h */,
+				7FEB4C5B1EB290AA00CA82E2 /* HotelService.m */,
 				7FC3D66C1EB01D35005C429E /* BookViewController.h */,
 				7FC3D66D1EB01D35005C429E /* BookViewController.m */,
 				7FC3D6661EAFBC9B005C429E /* DatePickerViewController.h */,
@@ -318,7 +318,7 @@
 				7FEB4C4E1EB1604C00CA82E2 /* LookupReservationViewController.m in Sources */,
 				7FC3D66B1EAFCF91005C429E /* RoomAvailabilityViewController.m in Sources */,
 				7FC3D66E1EB01D35005C429E /* BookViewController.m in Sources */,
-				7FEB4C5C1EB290AA00CA82E2 /* HotelServiceController.m in Sources */,
+				7FEB4C5C1EB290AA00CA82E2 /* HotelService.m in Sources */,
 				7F2876751EAEA4850045F711 /* HotelsViewController.m in Sources */,
 				7F2876781EAEC6780045F711 /* RoomsViewController.m in Sources */,
 				7FEB4C511EB2607500CA82E2 /* MappingModel1.0-1.1.xcmappingmodel in Sources */,

@@ -29,14 +29,13 @@
 
 -(NSFetchedResultsController *)availableRooms{
     
-    //overriding available rooms getter
     if (!_availableRooms) {
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
         
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Reservation"];
         
-        request.predicate = [NSPredicate predicateWithFormat:@"startDate <= %@ AND endDate >= %@", self.endDate, [NSDate date]];//reference self.startDate for lab
+        request.predicate = [NSPredicate predicateWithFormat:@"startDate <= %@ AND endDate >= %@", self.endDate, [NSDate date]];
         
         NSError *roomError;
         
@@ -107,7 +106,6 @@
     
     id<NSFetchedResultsSectionInfo> sectionInfo = [[self.availableRooms sections]objectAtIndex:section];
     
-    //return self.availableRooms.count;
     return sectionInfo.numberOfObjects;
 }
 
@@ -115,7 +113,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-//    Room *currentRoom = self.availableRooms[indexPath.row];
     Room *currentRoom = [self.availableRooms objectAtIndexPath:indexPath];
     
     cell.textLabel.text = [NSString stringWithFormat:@"Room: %i", currentRoom.number];

@@ -88,7 +88,6 @@
     self.lastNameTextField              = [[UITextField alloc]init];
     self.emailTextField                 = [[UITextField alloc]init];
     
-    //    UIButton *bookButton                = [self createButtonWithTitle:@"Book"];
     //    self.firstNameTextField.backgroundColor = [UIColor yellowColor];
     //    self.lastNameTextField.backgroundColor = [UIColor redColor];
     //    self.emailTextField.backgroundColor = [UIColor blueColor];
@@ -170,7 +169,7 @@
         NSLog(@"Reservation saved successfully");
         
         [Answers logCustomEventWithName:@"Saved Reservation" customAttributes:nil];
-                
+        
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     

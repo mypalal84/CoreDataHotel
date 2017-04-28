@@ -55,9 +55,7 @@
         NSLog(@"Reservation saved successfully");
         
         [Answers logCustomEventWithName:@"Saved Reservation" customAttributes:nil];
-        
     }
-    
 }
 
 

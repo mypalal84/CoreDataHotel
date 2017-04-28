@@ -144,6 +144,7 @@
                                      firstName:self.firstNameTextField.text
                                       lastName:self.lastNameTextField.text
                                          email:self.emailTextField.text];
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

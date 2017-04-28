@@ -24,5 +24,7 @@
                             lastName:(NSString *)lastName
                                email:(NSString *)email;
 
+//+ (void)findAvailableRoomsWith
+
 
 @end

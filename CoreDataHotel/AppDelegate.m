@@ -12,6 +12,8 @@
 #import "Hotel+CoreDataProperties.h"
 #import "Room+CoreDataClass.h"
 #import "Room+CoreDataProperties.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -28,6 +30,8 @@
     [[UIDevice currentDevice]beginGeneratingDeviceOrientationNotifications];
     [self setupRootViewController];
     [self bootstrapApp];
+    
+    [Fabric with:@[[Crashlytics class]]];
 
     return YES;
 }
@@ -77,7 +81,7 @@ Room *newRoom                   = [NSEntityDescription insertNewObjectForEntityF
 NSNumber *number                = room[@"number"];
 newRoom.number                  = [number integerValue];
 newRoom.beds                    = (NSInteger)room[@"beds"];
-newRoom.rate                    = (NSInteger)room[@"rate"];
+newRoom.cost                    = (NSInteger)room[@"cost"];
 
 newRoom.hotel                   = newHotel;
 

@@ -51,7 +51,7 @@
 
     Room *room                = self.allRooms[indexPath.row];
 
-    cell.textLabel.text       = [NSString stringWithFormat:@"%d", room.number];
+    cell.textLabel.text       = [NSString stringWithFormat:@"Room: %d", room.number];
 
     return cell;
 }

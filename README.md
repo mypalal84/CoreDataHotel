@@ -1,2 +1,2 @@
 # CoreDataHotel
-Programmatic Layout and MRC with XCTest
+Programmatic Layout with MRC and XCTest

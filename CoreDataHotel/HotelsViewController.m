@@ -19,6 +19,14 @@
 
 @property(strong, nonatomic)UITableView *tableView;
 
+@property(strong, nonatomic)NSArray *images;
+
+@property(strong, nonatomic)UIImage *okayMotel;
+@property(strong, nonatomic)UIImage *solidStay;
+@property(strong, nonatomic)UIImage *decentInn;
+@property(strong, nonatomic)UIImage *fancyEstates;
+
+
 @end
 
 @implementation HotelsViewController
@@ -28,6 +36,12 @@
 
     self.tableView                  = [[UITableView alloc]init];
     [self.view addSubview:self.tableView];
+    self.okayMotel = [UIImage imageNamed:@"okay_motel"];
+    self.solidStay = [UIImage imageNamed:@"solid_stay"];
+    self.decentInn = [UIImage imageNamed:@"decent_inn"];
+    self.fancyEstates = [UIImage imageNamed:@"fancy_estates"];
+    
+    self.images = [[NSArray alloc]initWithObjects:self.okayMotel, self.solidStay, self.decentInn, self.fancyEstates, nil];
 
     [AutoLayout fullScreeenConstraintsWithVFLForView:self.tableView];
     [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -70,17 +84,25 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_allHotels count];
+    return [self.allHotels count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 120;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell           = [tableView dequeueReusableCellWithIdentifier:@"HotelCell" forIndexPath:indexPath];
+    
+    
 
     NSArray *hotels                 = _allHotels;
     Hotel *currentHotel             = hotels[indexPath.row];
     cell.textLabel.text             = currentHotel.name;
-
+    cell.imageView.image = self.images[indexPath.row];
+    
     return cell;
 }
 

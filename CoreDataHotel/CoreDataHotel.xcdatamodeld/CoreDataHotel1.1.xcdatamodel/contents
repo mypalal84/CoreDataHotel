@@ -28,7 +28,7 @@
     </entity>
     <elements>
         <element name="Guest" positionX="-54" positionY="81" width="128" height="103"/>
-        <element name="Hotel" positionX="-54" positionY="-99" width="128" height="103"/>
+        <element name="Hotel" positionX="-54" positionY="-99" width="128" height="105"/>
         <element name="Reservation" positionX="178" positionY="63" width="137" height="103"/>
         <element name="Room" positionX="171" positionY="-99" width="128" height="133"/>
     </elements>
